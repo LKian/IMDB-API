@@ -8,7 +8,7 @@ const moviePlot = document.querySelector(".listing__summary")
 searchField.onkeyup = function () {
     let searchQuery = searchField.value.replace(/ /g, "%20");
 
-    fetch(`http://localhost:3000/movie?search=${searchQuery}`)
+    fetch(`/movie?search=${searchQuery}`)
         .then(response => {
             return response();
         })
