@@ -10,7 +10,7 @@ searchField.onkeyup = function () {
 
     fetch(`/movie?search=${searchQuery}`)
         .then(response => {
-            return response();
+            return response.json();
         })
         .then(data => {
             console.log(data)
