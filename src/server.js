@@ -9,6 +9,9 @@ app.use(express.static('public'))
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
 const { get } = require('axios');
 
 app.get('/', (req, res) => {
