@@ -6,31 +6,26 @@ const express = require('express');
 const app = express();
 
 app.use(express.static('public'))
-
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-const { get } = require('axios');
+const axios = require('axios');
+
+// ROUTES
 
 app.get('/', (req, res) => {
     res.render('../src/pages/index')
-})
-
-app.get('/public', (req, res) => {
-    res.render('../public')
 })
 
 app.get('/movie', async (req, res) => {
     const { query: { search } } = req;
     const apiURL = `https://www.omdbapi.com/?t=${search}&apikey=${apiKey}`;
     console.log("apiURL ", apiURL);
-    const { data } = await get(apiURL).catch(e => {
-        console.log("Error", e)
-    })
-    return res.json(data);
+
+    const apiData = await axios.get(apiURL);
+    console.log("apiData ", apiData);
+    return apiData;
 });
 
 const port = 3000;
-app.listen(port, () => console.log(`Listen to the wind on port ${port}`));
-
-
+app.listen(port, () => console.log(`Listening on port ${port}`));

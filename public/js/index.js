@@ -30,4 +30,7 @@ searchField.onkeyup = function () {
                 moviePlot.innerHTML = "";
             }
         })
+        .catch(error => {
+            console.log('Error fetching data ', error);
+        });
 }
