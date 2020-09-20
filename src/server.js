@@ -1,6 +1,5 @@
 require("dotenv").config();
 const apiKey = process.env.API_KEY;
-console.log("apiKey ", apiKey);
 
 const express = require("express");
 const app = express();
@@ -19,7 +18,7 @@ app.get("/", (req, res) => {
 
 app.get("/movie", async (req, res) => {
   const {
-    query: { search }
+    query: { search },
   } = req;
   const apiURL = `https://www.omdbapi.com/?t=${search}&apikey=${apiKey}`;
   console.log("apiURL ", apiURL);
