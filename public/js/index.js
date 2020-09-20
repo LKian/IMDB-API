@@ -13,11 +13,9 @@ searchField.onkeyup = function () {
             return response.json();
         })
         .then(data => {
-            console.log(data)
             const title = data.Title;
             const image = data.Poster;
             const plot = data.Plot;
-            console.log("title ", title);
             if (title && image) {
                 movieTitle.innerHTML = title;
                 movieImage.src = image;
